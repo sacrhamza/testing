@@ -25,7 +25,8 @@ pipeline {
         steps {
           withCredentials([
               string(
-                SECRET: 'SECRET'
+                SECRET: 'SECRET',
+                SOMETING: 'SECRET'
                 )
           ])
           {
