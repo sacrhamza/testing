@@ -24,8 +24,8 @@ pipeline {
         stage('Use Credentials') {
             steps {
                 withCredentials([usernamePassword(
-                SECRET: 'SECRET'
-                    // credentialsId: 'MY_CREDENTIALS_ID',
+                SECRET: 'SECRET',
+                    credentialsId: 'SECRET',
                     // usernameVariable: 'USERNAME',
                     // passwordVariable: 'PASSWORD'
                 )]) {
