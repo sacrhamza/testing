@@ -5,7 +5,8 @@ pipeline {
     stage('build') {
       steps {
         script {
-          git 'https://github.com/sacrhamza/testing'
+          git branch: 'main',
+            url: 'https://github.com/sacrhamza/testing'
           sh 'echo hello'
           sh 'ls'
         }
