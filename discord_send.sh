@@ -28,4 +28,6 @@ send_text() {
 	curl -H "Content-Type: application/json" -X POST -d "{\"content\": \"${text}\"}" ${DISCORD_HOOK}
 }
 
-send_text "$JOB_NAME"
+send_text "job name: $JOB_NAME
+GIT_BRANCH: $GIT_BRANCH
+"
