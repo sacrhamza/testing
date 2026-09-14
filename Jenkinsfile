@@ -24,7 +24,10 @@ pipeline {
         stage('Use Credentials') {
             steps {
                 withCredentials([usernamePassword(
-                    SECRET: 'SECRET'
+                    string(
+                     credentialsId: 'SECRET',
+                     variable: 'SECRET'
+                    )
                 )]) {
                     sh '''
                         echo "Username: $SECRET"
