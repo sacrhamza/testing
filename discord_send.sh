@@ -28,4 +28,4 @@ send_text() {
 	curl -H "Content-Type: application/json" -X POST -d "{\"content\": \"${text}\"}" ${DISCORD_HOOK}
 }
 
-send_text "hello from jenkins server"
+send_text "$JOB_NAME"
