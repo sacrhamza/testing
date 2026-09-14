@@ -1,5 +1,9 @@
 pipeline {
-  agent any
+  agent {
+    docker {
+      image 'debian'
+    }
+  }
 
   stages {
     stage('build') {
@@ -7,8 +11,8 @@ pipeline {
         script {
           git branch: 'main',
             url: 'https://github.com/sacrhamza/testing'
-          sh 'echo hello'
-          sh 'ls'
+            sh 'apt update && apt install curl file -y'
+            sh 'bash ./discord_send.sh'
         }
       }
     }
