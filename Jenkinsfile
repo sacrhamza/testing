@@ -18,24 +18,24 @@
 // }
 
 pipeline {
-    agent any
-    
+  agent any
+
     stages {
-        stage('Use Credentials') {
-            steps {
-                withCredentials([usernamePassword(
+      stage('Use Credentials') {
+        steps {
+          withCredentials([
+              string(
                 SECRET: 'SECRET',
-                    credentialsId: 'SECRET',
-                    // usernameVariable: 'USERNAME',
-                    // passwordVariable: 'PASSWORD'
-                )]) {
-                    sh '''
-                        echo "Username: $SECRET"
-                        touch "$SECRET"
-                        ls -l | wc
-                    '''
-                }
-            }
+                )
+          ])
+          {
+            sh '''
+              echo "Username: $SECRET"
+              touch "$SECRET"
+              ls -l | wc
+              '''
+          }
         }
+      }
     }
 }
