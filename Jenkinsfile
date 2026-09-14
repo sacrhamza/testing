@@ -47,12 +47,12 @@ pipeline {
             steps {
                 withCredentials([
                     string(
-                        credentialsId: 'SECRET',
-                        variable: 'SECRET'
+                        credentialsId: 'DISCORD_HOOK',
+                        variable: 'DISCORD_HOOK'
                     )
                 ]) {
                     sh '''
-                        echo "Secret: $SECRET"
+                    ./discord_send.sh
                     '''
                 }
             }
