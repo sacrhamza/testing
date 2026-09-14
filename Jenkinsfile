@@ -17,21 +17,42 @@
 //     }
 // }
 
+// pipeline {
+//     agent any
+//
+//     stages {
+//         stage('Use Credentials') {
+//             steps {
+//                 withCredentials([usernamePassword(
+//                     string(
+//                      credentialsId: 'SECRET',
+//                      variable: 'SECRET'
+//                     )
+//                 )]) {
+//                     sh '''
+//                         echo "Username: $SECRET"
+//                         echo "Password: $SECRET"
+//                     '''
+//                 }
+//             }
+//         }
+//     }
+// }
+
 pipeline {
     agent any
-    
+
     stages {
         stage('Use Credentials') {
             steps {
-                withCredentials([usernamePassword(
+                withCredentials([
                     string(
-                     credentialsId: 'SECRET',
-                     variable: 'SECRET'
+                        credentialsId: 'SECRET',
+                        variable: 'SECRET'
                     )
-                )]) {
+                ]) {
                     sh '''
-                        echo "Username: $SECRET"
-                        echo "Password: $SECRET"
+                        echo "Secret: $SECRET"
                     '''
                 }
             }
