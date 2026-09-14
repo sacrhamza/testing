@@ -30,4 +30,5 @@ send_text() {
 
 send_text "job name: $JOB_NAME
 GIT_BRANCH: $GIT_BRANCH
+GIT_BRANCH: $GIT_BRANCH
 "
