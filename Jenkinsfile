@@ -22,7 +22,7 @@ pipeline {
             subject: "Pipeline Failed: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
             body: """The pipeline failed on the last commit. 
             Check console output at: """,
-            to: "$WHOAMI",  // send to the commiter
+            to: '$WHOAMI',  // send to the commiter
             attachLog: true // This grabs the log file from Jenkins automatically
             )
           // emailext (
