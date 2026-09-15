@@ -1,61 +1,20 @@
-// pipeline {
-//   agent any
-//
-//     stages {
-//       stage('build') {
-//         steps {
-//           withCredentials([usernamePassword(
-//                 SECRET: 'SECRET'
-//                 )]) {
-//             // script {
-//             git branch: 'main',  url:  'https://github.com/sacrhamza/testing'
-//               sh './script'
-//               // }
-//           }
-//         }
-//       }
-//     }
-// }
-
-// pipeline {
-//     agent any
-//
-//     stages {
-//         stage('Use Credentials') {
-//             steps {
-//                 withCredentials([usernamePassword(
-//                     string(
-//                      credentialsId: 'SECRET',
-//                      variable: 'SECRET'
-//                     )
-//                 )]) {
-//                     sh '''
-//                         echo "Username: $SECRET"
-//                         echo "Password: $SECRET"
-//                     '''
-//                 }
-//             }
-//         }
-//     }
-// }
-
 pipeline {
-    agent any
-
+  agent any
     stages {
-        stage('Use Credentials') {
-            steps {
-                withCredentials([
-                    string(
-                        credentialsId: 'DISCORD_HOOK',
-                        variable: 'DISCORD_HOOK'
-                    )
-                ]) {
-                    sh '''
-                    ./discord_send.sh
-                    '''
-                }
-            }
+      stage('build') {
+        steps {
+          sh 'error'
         }
+      }
     }
+  post {
+    failure {
+      emailext (
+          subject: "Pipeline Failed: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
+          body: """The pipeline failed on the last commit. 
+          Check console output at: """,
+          to: 'culprits(), developers()' // Sends email to the author of the change
+          )
+    }
+  }
 }
