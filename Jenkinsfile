@@ -13,7 +13,7 @@ pipeline {
           subject: "Pipeline Failed: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
           body: """The pipeline failed on the last commit. 
           Check console output at: """,
-          to: 'culprits(), developers()' // Sends email to the author of the change
+          to: 'tegabe3649@duidir.com' // Sends email to the author of the change
           )
     }
   }
