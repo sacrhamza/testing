@@ -23,6 +23,7 @@ pipeline {
             body: """The pipeline failed on the last commit. 
             Check console output at: """,
             to: '${ENV, var="WHOAMI"}',  // send to the commiter
+            recipientProviders: [culprits()],
             attachLog: true // This grabs the log file from Jenkins automatically
             )
           // emailext (
