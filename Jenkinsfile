@@ -20,7 +20,7 @@ pipeline {
             sh '''
               git checkout testing
               git config user.email ${MAIL}
-              git config user.name ${GITUSERNAME}
+              git config user.name ${GIT_USERNAME}
               git branch
               echo "hello from jenkins" > newfile
               git add .
