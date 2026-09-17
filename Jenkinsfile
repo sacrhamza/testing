@@ -32,11 +32,10 @@ pipeline {
              git config user.email ${MAIL}
              git config user.name ${GIT_USERNAME}
              git branch
-             echo "hello from jenkins" > newfile2
+             echo "hello from jenkins" > newfile3
              git add .
              git commit -m 'jenkins commited'
              git push https://${GIT_USERNAME}:${GITHUB_TOKEN}@github.com/${GIT_USERNAME}/testing.git
-
               '''
           }
         }
