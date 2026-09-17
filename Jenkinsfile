@@ -27,18 +27,15 @@ pipeline {
              git branch
              git status
 
+              # config mail and username for git
+             git config user.email ${MAIL}
+             git config user.name ${GIT_USERNAME}
 
               # do some changes
              echo "hello from jenkins" > newfile4
 
              git add .
              git commit -m 'jenkins commited'
-
-
-              # config mail and username for git
-             #git config user.email ${MAIL}
-             #git config user.name ${GIT_USERNAME}
-
              git push https://${GIT_USERNAME}:${GITHUB_TOKEN}@github.com/${GIT_USERNAME}/testing.git
               '''
           }
