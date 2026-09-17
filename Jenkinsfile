@@ -1,41 +1,53 @@
 pipeline {
   agent any
     stages {
-      stage('build') {
-        steps {
-          sh 'error'
+      stage ('add file') {
+        steps  {
+          withCredentials(
+              [
+              usernamePassword(
+                credentialsId: 'Github-token',
+                passwordVariable: 'GITHUB_TOKEN',
+                usernameVariable: 'GIT_USERNAME'),
+                string (
+                credentialsId: 'MAIL',
+                variable: 'MAIL'
+                )
+              ]
+            )
+          {
+           deleteDir()
+           checkout scm
+            // git branch: 'testing', url: 'https://github.com/sacrhamza/testing.git'
+            sh '''
+            ls
+            # git fetch origin
+             git branch
+             git checkout testing
+             git branch
+             git status
+
+              # config mail and username for git
+             git config user.email ${MAIL}
+             git config user.name ${GIT_USERNAME}
+
+              # do some changes
+             echo "hello from jenkins" > newfile4
+
+             git add .
+             git commit -m 'jenkins commited'
+             git push https://${GIT_USERNAME}:${GITHUB_TOKEN}@github.com/${GIT_USERNAME}/testing.git
+              '''
+          }
         }
       }
     }
-  post {
-    failure {
-      withCredentials([
-          string(
-            credentialsId: 'WHOAMI',
-            variable: 'WHOAMI'
-            )
-      ]) 
-      {
-        emailext (
-            // add here all info about the build
-            // attack output
-            subject: "Pipeline Failed: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
-            body: """The pipeline failed on the last commit. 
-            Check console output at: """,
-            to: '${ENV, var="WHOAMI"}',  // send to the commiter
-            recipientProviders: [developers()],
-            attachLog: true // This grabs the log file from Jenkins automatically
-            )
-          // emailext (
-          //     // add here all info about the build
-          //     // attack output
-          //     subject: "Pipeline Failed: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
-          //     body: """The pipeline failed on the last commit. 
-          //     Check console output at: """,
-          //     recipientProviders: [culprits()],  // send to the commiter
-          //     attachLog: true // This grabs the log file from Jenkins automatically
-          //     )
+    post {
+      success {
+        echo 'pushed successfully'
+      }
+      failure {
+        echo 'fail'
       }
     }
-  }
 }
