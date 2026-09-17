@@ -1,41 +1,26 @@
 pipeline {
   agent any
     stages {
-      stage('build') {
-        steps {
-          sh 'error'
+      stage ('add file') {
+        steps  {
+          withCredentials(
+              [usernamePassword(
+                credentialsId: 'Github-token',
+                passwordVariable: 'GITHUB_TOKEN',
+                usernameVariable: 'GIT_USERNAME')])
+          {
+            // git branch: 'testing', url: 'https://github.com/sacrhamza/testing.git'
+            sh '''
+
+              echo "hello from jenkins" > newfile
+              git add .
+              git commit -m "jenkins commited"'
+              git push   
+              git push https://${GIT_USERNAME}:${GITHUB_TOKEN}@github.com/sacrhamza/testing.git
+
+              '''
+          }
         }
       }
     }
-  post {
-    failure {
-      withCredentials([
-          string(
-            credentialsId: 'WHOAMI',
-            variable: 'WHOAMI'
-            )
-      ]) 
-      {
-        emailext (
-            // add here all info about the build
-            // attack output
-            subject: "Pipeline Failed: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
-            body: """The pipeline failed on the last commit. 
-            Check console output at: """,
-            to: '${ENV, var="WHOAMI"}',  // send to the commiter
-            recipientProviders: [developers()],
-            attachLog: true // This grabs the log file from Jenkins automatically
-            )
-          // emailext (
-          //     // add here all info about the build
-          //     // attack output
-          //     subject: "Pipeline Failed: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
-          //     body: """The pipeline failed on the last commit. 
-          //     Check console output at: """,
-          //     recipientProviders: [culprits()],  // send to the commiter
-          //     attachLog: true // This grabs the log file from Jenkins automatically
-          //     )
-      }
-    }
-  }
 }
