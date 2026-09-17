@@ -25,7 +25,7 @@ pipeline {
              git branch
              git status
               #git config pull.ff only 
-             #git pull
+             git pull
              git config user.email ${MAIL}
              git config user.name ${GIT_USERNAME}
              git branch
