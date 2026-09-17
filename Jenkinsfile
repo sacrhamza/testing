@@ -16,6 +16,8 @@ pipeline {
               ]
             )
           {
+       deleteDir()
+        checkout scm
             // git branch: 'testing', url: 'https://github.com/sacrhamza/testing.git'
             sh '''
             ls
