@@ -12,11 +12,12 @@ pipeline {
             // git branch: 'testing', url: 'https://github.com/sacrhamza/testing.git'
             sh '''
 
-              echo "hello from jenkins" > newfile
-              git add .
-              git commit -m "jenkins commited"
-              git push   
-              git push https://${GIT_USERNAME}:${GITHUB_TOKEN}@github.com/sacrhamza/testing.git
+              git branch
+              // echo "hello from jenkins" > newfile
+              // git add .
+              // git commit -m "jenkins commited"
+              // git push   
+              // git push https://${GIT_USERNAME}:${GITHUB_TOKEN}@github.com/sacrhamza/testing.git
 
               '''
           }
