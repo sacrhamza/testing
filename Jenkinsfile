@@ -14,7 +14,7 @@ pipeline {
 
               echo "hello from jenkins" > newfile
               git add .
-              git commit -m "jenkins commited"'
+              git commit -m "jenkins commited"
               git push   
               git push https://${GIT_USERNAME}:${GITHUB_TOKEN}@github.com/sacrhamza/testing.git
 
