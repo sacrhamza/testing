@@ -31,7 +31,7 @@ pipeline {
              #git config user.email ${MAIL}
              #git config user.name ${GIT_USERNAME}
 
-              // do some changes
+              # do some changes
              echo "hello from jenkins" > newfile3
 
              git add .
