@@ -21,6 +21,7 @@ pipeline {
             git fetch origin
              git branch
              git checkout testing
+            git reset --hard origin/testing
              git branch
              git status
               git config pull.ff only 
