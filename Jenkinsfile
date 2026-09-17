@@ -18,6 +18,7 @@ pipeline {
           {
             // git branch: 'testing', url: 'https://github.com/sacrhamza/testing.git'
             sh '''
+            ls
             # git fetch origin
              git branch
              git checkout testing
