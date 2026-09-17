@@ -21,7 +21,8 @@ pipeline {
              git branch
              git checkout testing
              git branch
-             git pull
+              git config pull.ff only 
+             #git pull
              git config user.email ${MAIL}
              git config user.name ${GIT_USERNAME}
              git branch
