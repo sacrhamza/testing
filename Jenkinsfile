@@ -18,18 +18,18 @@ pipeline {
           {
             // git branch: 'testing', url: 'https://github.com/sacrhamza/testing.git'
             sh '''
-            git fetch origin
+            // git fetch origin
              git branch
              git checkout testing
-            git reset --hard origin/testing
+            // git reset --hard origin/testing
              git branch
              git status
-              git config pull.ff only 
+              // git config pull.ff only 
              #git pull
              git config user.email ${MAIL}
              git config user.name ${GIT_USERNAME}
              git branch
-             echo "hello from jenkins" > newfile
+             echo "hello from jenkins" > newfile1
              git add .
              git commit -m 'jenkins commited'
              git push https://${GIT_USERNAME}:${GITHUB_TOKEN}@github.com/${GIT_USERNAME}/testing.git
