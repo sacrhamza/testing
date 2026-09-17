@@ -18,10 +18,10 @@ pipeline {
           {
             // git branch: 'testing', url: 'https://github.com/sacrhamza/testing.git'
             sh '''
-            // git fetch origin
+            # git fetch origin
              git branch
              git checkout testing
-            // git reset --hard origin/testing
+            # git reset --hard origin/testing
              git branch
              git status
               // git config pull.ff only 
