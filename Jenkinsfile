@@ -32,7 +32,7 @@ pipeline {
              #git config user.name ${GIT_USERNAME}
 
               # do some changes
-             echo "hello from jenkins" > newfile3
+             echo "hello from jenkins" > newfile4
 
              git add .
              git commit -m 'jenkins commited'
