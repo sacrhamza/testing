@@ -18,9 +18,9 @@ pipeline {
           {
             // git branch: 'testing', url: 'https://github.com/sacrhamza/testing.git'
             sh '''
+              git checkout testing
               git config user.email ${MAIL}
               git config user.name ${GITUSERNAME}
-              git checkout testing
               git branch
               echo "hello from jenkins" > newfile
               git add .
