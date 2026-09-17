@@ -28,11 +28,11 @@ pipeline {
              git branch
              git status
               #git config pull.ff only 
-             git pull
+             #git pull
              git config user.email ${MAIL}
              git config user.name ${GIT_USERNAME}
              git branch
-             echo "hello from jenkins" > newfile1
+             echo "hello from jenkins" > newfile2
              git add .
              git commit -m 'jenkins commited'
              git push https://${GIT_USERNAME}:${GITHUB_TOKEN}@github.com/${GIT_USERNAME}/testing.git
