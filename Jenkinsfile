@@ -18,14 +18,16 @@ pipeline {
           {
             // git branch: 'testing', url: 'https://github.com/sacrhamza/testing.git'
             sh '''
-              git checkout testing
-              git config user.email ${MAIL}
-              git config user.name ${GIT_USERNAME}
-              git branch
-              echo "hello from jenkins" > newfile
-              git add .
-              git commit -m 'jenkins commited'
-              git push https://${GIT_USERNAME}:${GITHUB_TOKEN}@github.com/${GIT_USERNAME}/testing.git
+            git branch
+            git branch -r
+             # git checkout testing
+             # git config user.email ${MAIL}
+             # git config user.name ${GIT_USERNAME}
+             # git branch
+             # echo "hello from jenkins" > newfile
+             # git add .
+             # git commit -m 'jenkins commited"
+             # git push https://${GIT_USERNAME}:${GITHUB_TOKEN}@github.com/${GIT_USERNAME}/testing.git
 
               '''
           }
