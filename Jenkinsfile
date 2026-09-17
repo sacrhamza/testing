@@ -24,7 +24,7 @@ pipeline {
             # git reset --hard origin/testing
              git branch
              git status
-              // git config pull.ff only 
+              #git config pull.ff only 
              #git pull
              git config user.email ${MAIL}
              git config user.name ${GIT_USERNAME}
