@@ -21,13 +21,14 @@ pipeline {
              git branch
              git checkout testing
              git branch
-             # git config user.email ${MAIL}
-             # git config user.name ${GIT_USERNAME}
-             # git branch
-             # echo "hello from jenkins" > newfile
-             # git add .
-             # git commit -m 'jenkins commited"
-             # git push https://${GIT_USERNAME}:${GITHUB_TOKEN}@github.com/${GIT_USERNAME}/testing.git
+             git pull
+             git config user.email ${MAIL}
+             git config user.name ${GIT_USERNAME}
+             git branch
+             echo "hello from jenkins" > newfile
+             git add .
+             git commit -m 'jenkins commited"
+             git push https://${GIT_USERNAME}:${GITHUB_TOKEN}@github.com/${GIT_USERNAME}/testing.git
 
               '''
           }
