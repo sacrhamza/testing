@@ -18,9 +18,9 @@ pipeline {
           {
             // git branch: 'testing', url: 'https://github.com/sacrhamza/testing.git'
             sh '''
-            git branch
-            git branch -r
-             # git checkout testing
+             git branch
+             git checkout testing
+             git branch
              # git config user.email ${MAIL}
              # git config user.name ${GIT_USERNAME}
              # git branch
